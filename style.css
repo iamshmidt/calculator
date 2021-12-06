@@ -1,0 +1,199 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: "Spartan", sans-serif;
+  font-weight: bolder;
+  /* font-size: 20px; */
+}
+
+.theme-dark {
+  --main-bg: #3b4664ff;
+  --font-color:#fff;
+  --output-bg: #181f32ff;
+  --btn-bg: #e9e3dbff;
+  --btn-del-reset: #647299ff;
+  --btn-main-bg: #252d44ff;
+  --btn-equal: #d13f30ff;
+  --lbl-light:rgb(255, 255, 255);
+  --lbl-dark:rgb(46, 42, 68);
+  --lbl-checked-dark:rgb(25, 26, 37);
+  --previous-operand:rgba(2555, 255, 255, 0.75);
+  --btn-bx-shadow: rgb(167, 163, 157);
+  --btn-reset-del-shadow: #3b4664ff;
+  --btn-equal-shadow:rgb(129, 47, 38);
+  
+}
+.theme-light {
+  --main-bg: #E6E6E6ff;
+  --font-color:#333329ff;
+  --output-bg: #EEEEEEff;
+  --btn-bg: #E5E4DFff;
+  --btn-del-reset: #388187ff;
+  --btn-main-bg: #D3CDCDff;
+  --btn-equal: #C75303ff;
+  --lbl-light: #D3CDCDff;
+  --lbl-dark:#C95000ff;
+  --lbl-checked-dark:rgb(25, 26, 37);
+  --previous-operand:rgb(51, 51, 41, 0.75);
+  --current-operand:#fff;
+  --btn-bx-shadow: #A79D96ff;
+  --btn-reset-del-shadow: #275D64ff;
+  --btn-equal-shadow:#8E3700ff;
+}
+
+
+body {
+  padding: 0;
+  margin: 0;
+  background: var(--main-bg);
+}
+
+.calculator {
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+}
+
+/* Toggle switch */
+.theme-switcher {
+  display: flex;
+  justify-content: space-between;
+  color: var(--font-color);
+  padding-bottom: 20px;
+  font-size: 20px;
+}
+
+.switch-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.switch {
+  width: 50px;
+  height: 24px;
+}
+
+input {
+  width: 0;
+  height: 0;
+  display: none;
+  visibility: hidden;
+}
+
+label {
+  position: absolute;
+  right: 1px;
+  cursor: pointer;
+  display: block;
+  text-indent: -9999px;
+  height: 24px;
+  width: 50px;
+  border-radius: 50px;
+  background-color: var(--lbl-light);
+  transition: 0.5s ease background-color;
+}
+
+label::after {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  top: 48%;
+  left: 2px;
+  transform: translateY(-50%);
+  background-color: var(--lbl-dark);
+  transition: 0.5s ease;
+}
+
+input:checked + label::after {
+  left: calc(100% - 23px);
+  background-color: aliceblue;
+}
+input:checked + label {
+  background-color: var(--lbl-checked-dark);
+}
+
+/* calculator */
+.output {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 45px;
+  word-wrap: break-word;
+  word-break: break-all;
+  width: 100%;
+  height: 80px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--output-bg);
+  color:var(--font-color);
+  text-align: right;
+  padding-right: 20px;
+  padding-left: 10px;
+  font-size: 4rem;
+}
+
+.output .previous-operand {
+  color: var(--previous-operand);
+  font-size: 1.5rem;
+}
+
+.output .current-operand {
+  color: var(--font-color);
+  font-size: 2rem;
+}
+
+.calculator-keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 15px;
+  padding: 20px;
+  background-color: var(--btn-main-bg);
+  border-radius: 5px;
+  margin-top: 17px;
+}
+
+button {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 0px solid;
+  outline: none;
+  background-color: var(--btn-bg);
+  box-shadow: 0px 3px 0px 0px var(--btn-bx-shadow);
+}
+
+button.del,
+button.reset {
+  background-color: var(--btn-del-reset);
+  box-shadow: 0px 3px 0px 0px var(--btn-reset-del-shadow);
+  color: #fff;
+  font-size: 13px;
+}
+
+
+button.equal {
+  background-color: var(--btn-equal);
+  box-shadow: 0px 3px 0px 0px var(--btn-equal-shadow);
+  color: #fff;
+}
+
+.span-two {
+  grid-column: span 2;
+}
+
+.output {
+  grid-column: 1/-1;
+}
